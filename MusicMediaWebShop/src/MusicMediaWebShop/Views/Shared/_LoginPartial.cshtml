@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm">
+
+        <ul class="menu">
+            <li>
+                <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage" class="userName">@UserManager.GetUserName(User)!</a>
+            </li>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+            <li>
+                <a href="#">Recently viewed</a>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-danger">Log Off</button>
+            </li>
+        </ul>
+
+    </form>
+}
+else
+{
+    <ul class="menu">
+        <li>
+            <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+        </li>
+        <li>
+            <a asp-action="Register" asp-controller="Account">Register</a>
+        </li>
+        <li>
+            <a href="contact.html">Contact</a>
+        </li>
+        <li>
+            <a href="#">Recently viewed</a>
+        </li>
+    </ul>
+}
