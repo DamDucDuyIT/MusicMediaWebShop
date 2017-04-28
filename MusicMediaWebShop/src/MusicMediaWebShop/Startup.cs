@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using MusicMediaWebShop.Data;
 using MusicMediaWebShop.Models;
 using MusicMediaWebShop.Services;
+using MusicMediaWebShop.Models.Repository;
 
 namespace MusicMediaWebShop
 {
@@ -48,6 +49,7 @@ namespace MusicMediaWebShop
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddTransient<IProductRepository, EFProductRepository>();
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
