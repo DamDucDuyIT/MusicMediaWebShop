@@ -20,6 +20,11 @@ namespace MusicMediaWebShop.Models.Repository
 
         public async Task<int> CountAsync() => await _context.Products.CountAsync();
 
+        public async Task<IEnumerable<Product>> GetAllFilms() => await _context.Products
+                                                                                .Include(p => p.Category)
+                                                                                .Where(p => p.Category.CategoryName.Equals("Film"))
+                                                                                .ToListAsync();
+
 
         public async Task<IEnumerable<Product>> GetAllMusics() => await _context.Products
                                                                                 .Include(p => p.Category)
@@ -36,9 +41,8 @@ namespace MusicMediaWebShop.Models.Repository
         //public async Task<IEnumerable<Product>> ProductsAsync(int pageSize, int page) => await _context.Products.ToListAsync();
 
 
-        public Task<Product> SearchAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<Product> SearchAsync(int id) =>
+            await _context.Products
+            .FirstOrDefaultAsync(p => p.ProductID == id);
     }
 }

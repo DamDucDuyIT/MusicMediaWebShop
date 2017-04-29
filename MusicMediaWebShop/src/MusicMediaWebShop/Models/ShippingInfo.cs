@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,22 +9,32 @@ namespace MusicMediaWebShop.Models
 {
     public class ShippingInfo
     {
+        [BindNever]
         public int ShippingInfoID { get; set; }
-        public string ShippingType { get; set; }
 
-        public Order Order { get; set; }
+        [BindNever]
+        public ICollection<OrderDetail> LineItems { get; set; }
+
+        [Required(ErrorMessage = "Please enter a name")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Please enter your house number")]
+        [Display(Name = "House Number")]
+        public string HouseNumber { get; set; }
 
         [Required(ErrorMessage = "Please enter a city name")]
         public string City { get; set; }
 
-        [Required(ErrorMessage = "Please enter a state name")]
-        public string State { get; set; }
+        [Required(ErrorMessage = "Please enter a street name")]
+        public string Street { get; set; }
 
-        public string Zip { get; set; }
+        [Required(ErrorMessage = "Please enter a ward name")]
+        public string Ward { get; set; }
 
-        [Required(ErrorMessage = "Please enter a country name")]
-        public string Country { get; set; }
-
+        [Required(ErrorMessage = "Please enter a district name")]
+        public string District { get; set; }
         public bool GiftWrap { get; set; }
+        public bool Paid { get; set; }
+        public bool Sent { get; set; }
     }
 }

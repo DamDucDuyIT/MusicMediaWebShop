@@ -50,11 +50,16 @@ namespace MusicMediaWebShop
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IProductRepository, EFProductRepository>();
+            services.AddTransient<IPurchaseRepository, EFPurchaseRepository>();
+
+            services.AddScoped<IOrder>(sp => SessionOrder.GetCart(sp));
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+            services.AddMemoryCache();
+            services.AddSession();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -83,7 +88,7 @@ namespace MusicMediaWebShop
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715

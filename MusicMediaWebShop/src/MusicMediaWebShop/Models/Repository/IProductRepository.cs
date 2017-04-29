@@ -21,5 +21,7 @@ namespace MusicMediaWebShop.Models.Repository
         Task<Product> SearchAsync(int id);
 
         Task<IEnumerable<Product>> GetAllMusics();
+
+        Task<IEnumerable<Product>> GetAllFilms();
     }
 }

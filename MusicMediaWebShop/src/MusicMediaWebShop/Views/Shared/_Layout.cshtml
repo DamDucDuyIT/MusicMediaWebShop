@@ -116,7 +116,8 @@
                         <a href="@Url.Action("Index", "Home")">Home</a>
                     </li>
                     <li class="dropdown yamm-fw">
-                        <a  class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200" onclick="@("window.location.href='" + @Url.Action("Musics", "Music") + "'");" style="cursor: pointer">
+                        <a  class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200" 
+                           onclick="@("window.location.href='" + @Url.Action("Musics", "Music") + "'");" style="cursor: pointer">
                             <span>Music</span>
                         </a>
                         @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Music <b class="caret"></b></a>*@
@@ -236,7 +237,11 @@
                     </li>
 
                     <li class="dropdown yamm-fw">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Film <b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200"
+                           onclick="@("window.location.href='" + @Url.Action("Films", "Film") + "'");" style="cursor: pointer">
+                            <span>Film</span>
+                        </a>
+                        @*<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Film <b class="caret"></b></a>*@
                         <ul class="dropdown-menu">
                             <li>
                                 <div class="yamm-content">
@@ -452,7 +457,7 @@
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
+                    <a asp-controller="Cart" asp-action="Index" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">Items in cart</span></a>
                 </div>
                 <!--/.nav-collapse -->
 
