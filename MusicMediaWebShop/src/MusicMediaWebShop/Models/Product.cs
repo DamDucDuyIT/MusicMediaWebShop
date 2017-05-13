@@ -13,5 +13,7 @@ namespace MusicMediaWebShop.Models
         public string ProductDescription { get; set; }
         public string Productimage { get; set; }
         public Category Category { get; set; }
+        public Tag Tag { get; set; }
+        public ICollection<TagHelper> TagHelper { get; set; }
     }
 }

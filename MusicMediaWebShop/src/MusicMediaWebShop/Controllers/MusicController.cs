@@ -21,10 +21,10 @@ namespace MusicMediaWebShop.Controllers
 
 
         // GET: /<controller>/
-        public async Task<IActionResult> Musics()
+        public async Task<IActionResult> Musics(string TagDetail, string Tag)
         {
 
-            return View(await _repository.GetAllMusics());
+            return View(await _repository.GetAllMusics(TagDetail, Tag));
         }
     }
 }

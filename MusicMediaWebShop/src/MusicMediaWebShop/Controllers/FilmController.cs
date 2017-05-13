@@ -20,9 +20,9 @@ namespace MusicMediaWebShop.Controllers
         }
 
         // GET: /<controller>/
-        public async Task<IActionResult> Films()
+        public async Task<IActionResult> Films(string TagDetail, string Tag)
         {
-            return View(await _repository.GetAllFilms());
+            return View(await _repository.GetAllFilms(TagDetail, Tag));
         }
     }
 }

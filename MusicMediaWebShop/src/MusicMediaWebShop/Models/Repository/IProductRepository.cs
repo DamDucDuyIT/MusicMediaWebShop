@@ -20,8 +20,8 @@ namespace MusicMediaWebShop.Models.Repository
         //Product Search(int productId);
         Task<Product> SearchAsync(int id);
 
-        Task<IEnumerable<Product>> GetAllMusics();
+        Task<IEnumerable<Product>> GetAllMusics(string TagDetail,string Tag);
 
-        Task<IEnumerable<Product>> GetAllFilms();
+        Task<IEnumerable<Product>> GetAllFilms(string TagDetail, string Tag);
     }
 }

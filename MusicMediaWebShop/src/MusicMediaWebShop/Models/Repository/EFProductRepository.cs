@@ -20,17 +20,67 @@ namespace MusicMediaWebShop.Models.Repository
 
         public async Task<int> CountAsync() => await _context.Products.CountAsync();
 
-        public async Task<IEnumerable<Product>> GetAllFilms() => await _context.Products
-                                                                                .Include(p => p.Category)
-                                                                                .Where(p => p.Category.CategoryName.Equals("Film"))
-                                                                                .ToListAsync();
+        public async Task<IEnumerable<Product>> GetAllFilms(string TagDetail, string Tag)
+        {
+            if (String.IsNullOrEmpty(Tag) && String.IsNullOrEmpty(TagDetail))   //trường hợp user click vào category
+            {              
+                return await _context.Products
+                    .Include(p => p.Category)
+                    .Where(p => p.Category.CategoryName.Equals("Film"))
+                    .ToListAsync();
+            }
+            else if (String.IsNullOrEmpty(TagDetail))                           //trường hợp user click vào các category cha
+            {
+                return await _context.Products
+              .Include(p => p.Category)
+              .Include(t => t.TagHelper)
+                  .ThenInclude(ta => ta.TagDetail)
+              .Where(p => p.Category.CategoryName.Equals("Film") && p.Tag.TagName.Equals(Tag))
+              .ToListAsync();
+            }
+            else                                                               //trường hợp user click vào các category con
+            {
+                return await _context.Products
+                    .Include(p => p.Category)
+                    .Include(t => t.TagHelper)
+                        .ThenInclude(ta => ta.TagDetail)
+                    .Where(p => p.Category.CategoryName.Equals("Film") && p.Tag.TagName.Equals(Tag)
+                        && p.TagHelper.Any(t => t.TagDetail.TagDetailName == TagDetail))
+                    .ToListAsync();
+            }
+        }
 
 
-        public async Task<IEnumerable<Product>> GetAllMusics() => await _context.Products
-                                                                                .Include(p => p.Category)
-                                                                                .Where(p => p.Category.CategoryName.Equals("Music"))
-                                                                                .ToListAsync();
-        
+        public async Task<IEnumerable<Product>> GetAllMusics(string TagDetail, string Tag)
+        {
+            if(String.IsNullOrEmpty(Tag) && String.IsNullOrEmpty(TagDetail))   //trường hợp user click vào category
+            {
+                return await _context.Products
+                    .Include(p => p.Category)
+                    .Where(p => p.Category.CategoryName.Equals("Music"))
+                    .ToListAsync();
+            }
+            else if (String.IsNullOrEmpty(TagDetail))                           //trường hợp user click vào các category cha
+            {
+                return await _context.Products
+              .Include(p => p.Category)
+              .Include(t => t.TagHelper)
+                  .ThenInclude(ta => ta.TagDetail)
+              .Where(p => p.Category.CategoryName.Equals("Music") && p.Tag.TagName.Equals(Tag))
+              .ToListAsync();
+            }
+            else                                                               //trường hợp user click vào các category con
+            {
+                return await _context.Products
+                    .Include(p => p.Category)
+                    .Include(t=>t.TagHelper)
+                        .ThenInclude(ta=>ta.TagDetail)
+                    .Where(p => p.Category.CategoryName.Equals("Music") && p.Tag.TagName.Equals(Tag)
+                        && p.TagHelper.Any(t => t.TagDetail.TagDetailName == TagDetail))
+                    .ToListAsync();
+            }
+
+        }
 
         public Task<IEnumerable<Product>> ProductsAsync()
         {

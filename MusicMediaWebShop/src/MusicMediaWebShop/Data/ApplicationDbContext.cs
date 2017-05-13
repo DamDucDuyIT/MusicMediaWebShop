@@ -24,12 +24,17 @@ namespace MusicMediaWebShop.Data
             builder.Entity<OrderDetail>().ToTable("OrderDetail");
             builder.Entity<Category>().ToTable("Category");
             builder.Entity<ShippingInfo>().ToTable("Purchase");
+            builder.Entity<Tag>().ToTable("Tag");
+            builder.Entity<TagDetail>().ToTable("TagDetail");
+            builder.Entity<TagHelper>().ToTable("TagHelper");
         }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ShippingInfo> ShippingInfos { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Category> Categories{ get; set; }
-
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<TagDetail> TagDetails { get; set; }
+        public DbSet<TagHelper> TagHelpers { get; set; }
     }
 }
