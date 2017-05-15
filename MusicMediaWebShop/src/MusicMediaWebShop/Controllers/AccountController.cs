@@ -51,8 +51,8 @@ namespace MusicMediaWebShop.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(AuthenticationModel model, string returnUrl = null)
+       
+        public async Task<IActionResult> Login(AuthenticationModel model,string returnUrl)
         {
             
             ViewData["ReturnUrl"] = returnUrl;
