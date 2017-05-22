@@ -51,10 +51,10 @@ namespace MusicMediaWebShop.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-       
-        public async Task<IActionResult> Login(AuthenticationModel model,string returnUrl)
+
+        public async Task<IActionResult> Login(AuthenticationModel model, string returnUrl=null)
         {
-            
+
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace MusicMediaWebShop.Controllers
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                    return View(model);
+                    return View(model);                   
                 }
             }
 
@@ -86,6 +86,36 @@ namespace MusicMediaWebShop.Controllers
             return View(model);
         }
 
+
+
+
+        [HttpPost]
+        [AllowAnonymous]
+
+        public async Task<IActionResult> LoginPopup(AuthenticationModel model, string returnUrl = null)
+        {
+
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                // This doesn't count login failures towards account lockout
+                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation(1, "User logged in.");
+                    return Json(new { result = "true" });
+                }
+
+                else
+                {
+                    return Json(new { result = "false" });
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return Json(new { result = "false" });
+        }
         //
         // GET: /Account/Register
         [HttpGet]

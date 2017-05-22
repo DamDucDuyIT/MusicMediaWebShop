@@ -24,11 +24,20 @@ namespace MusicMediaWebShop.Models
 
             Admin admin = new Admin
             {
+                Order = _context.ShippingInfos.Count(),
                 Music = products.Where(p => p.Category.CategoryName.Equals("Music")).Count(),
                 Film = products.Where(p => p.Category.CategoryName.Equals("Film")).Count(),
                 User = _userManager.Users.Count()
             };
             return View(admin);
+        }
+
+        public async Task<IActionResult> Music()
+        {
+            IQueryable<Product> products = _context.Products.Include(t => t.Category);
+
+            IEnumerable<Product> productsList = await products.Where(t => t.Category.CategoryName.Equals("Music")).ToListAsync();
+            return View(productsList);
         }
     }
 }

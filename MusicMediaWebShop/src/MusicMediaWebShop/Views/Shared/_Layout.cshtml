@@ -86,19 +86,29 @@
                                        Password: $("input[name='password-modal']", this).val()
                                    };
 
-                                  
+
                                    console.log(JSON.stringify(model));
 
                                    $.ajax({
                                        type: 'POST',
-                                       url: '/Account/Login',
-                                       datatype: "html",
+                                       url: '/Account/LoginPopup',
+                                       
                                        data:  model,
                                        success: function (response) {
-                                           
+
                                            console.log('Data received: ');
                                            console.log(response);
-                                           location.reload(); 
+                                          
+                                           console.log(response);
+                                           if (response.result == "true") {
+
+                                               location.reload();
+                                           }
+                                           else {
+                                               $('#warning').html('username or password is invalid');
+
+                                           }
+                                           //location.reload();
                                        },
                                        failure: function (response) {
                                            //...

@@ -13,6 +13,10 @@
     <link href="~/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="~/vendor/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="~/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="~/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="~/vendor/morrisjs/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
@@ -269,7 +273,7 @@
                         </li>
                         
                         <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a asp-action="Music" asp-controller="Admin"><i class="fa fa-table fa-fw"></i> Music</a>
                         </li>
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
@@ -353,14 +357,23 @@
     <!-- /#wrapper -->
     <!-- jQuery -->
     <script src="~/vendor/jquery/jquery.min.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- Metis Menu Plugin JavaScript -->
     <script src="~/vendor/metisMenu/metisMenu.min.js"></script>
+
     <!-- Morris Charts JavaScript -->
     <script src="~/vendor/raphael/raphael.min.js"></script>
     <script src="~/vendor/morrisjs/morris.min.js"></script>
     <script src="~/vendor/data/morris-data.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="~/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="~/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="~/vendor/dist/js/sb-admin-2.js"></script>
 </body>
