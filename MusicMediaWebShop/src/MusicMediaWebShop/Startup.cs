@@ -101,6 +101,7 @@ namespace MusicMediaWebShop
             });
 
             SeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }

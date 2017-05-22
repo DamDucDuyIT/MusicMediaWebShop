@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using MusicMediaWebShop.Models.Repository;
 using MusicMediaWebShop.Models;
 using MusicMediaWebShop.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace MusicMediaWebShop.Controllers
 {
+   
     public class CartController : Controller
     {
         private IProductRepository _repository;
