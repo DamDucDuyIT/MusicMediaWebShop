@@ -26,7 +26,7 @@ namespace MusicMediaWebShop.Controllers
         public ViewResult Checkout() => View(new ShippingInfo());
 
         [HttpPost]
-        public async Task<IActionResult> Checkout(ShippingInfo purchase)
+        public async Task<IActionResult> Checkout(ShippingInfo shippingInfo)
         {
             if (_cart.LineItems.Count() == 0)
             {
@@ -35,13 +35,13 @@ namespace MusicMediaWebShop.Controllers
 
             if (ModelState.IsValid)
             {
-                purchase.LineItems = _cart.LineItems;
-                await _repository.SaveOrderAsync(purchase);
+                shippingInfo.LineItems = _cart.LineItems;
+                await _repository.SaveOrderAsync(shippingInfo);
                 return RedirectToAction(nameof(Completed));
             }
             else
             {
-                return View(purchase);
+                return View(shippingInfo);
             }
         }
 
