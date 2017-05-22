@@ -23,7 +23,7 @@ namespace MusicMediaWebShop.Data
             builder.Entity<ShippingInfo>().ToTable("ShippingInfos");
             builder.Entity<OrderDetail>().ToTable("OrderDetail");
             builder.Entity<Category>().ToTable("Category");
-            builder.Entity<ShippingInfo>().ToTable("Purchase");
+            
             builder.Entity<Tag>().ToTable("Tag");
             builder.Entity<TagDetail>().ToTable("TagDetail");
             builder.Entity<TagHelper>().ToTable("TagHelper");
