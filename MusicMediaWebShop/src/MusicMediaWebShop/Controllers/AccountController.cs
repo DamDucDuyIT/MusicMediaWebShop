@@ -43,7 +43,7 @@ namespace MusicMediaWebShop.Controllers
         [AllowAnonymous]
         public IActionResult Login(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            ViewData["ReturnUrl"] = returnUrl;            
             return View();
         }
 
