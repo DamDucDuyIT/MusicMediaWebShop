@@ -22,6 +22,10 @@ namespace MusicMediaWebShop.Models
         [Display(Name = "House Number")]
         public string HouseNumber { get; set; }
 
+        [Required(ErrorMessage = "Please enter your phone number")]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
         [Required(ErrorMessage = "Please enter a city name")]
         public string City { get; set; }
 

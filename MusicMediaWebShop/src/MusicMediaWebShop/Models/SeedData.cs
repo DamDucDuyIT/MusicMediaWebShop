@@ -160,6 +160,21 @@ namespace MusicMediaWebShop.Models
                 new Product { ProductName = "Pokemon", Category = film, Price = 69.69m, Tag = Anime },
                 new Product { ProductName = "High kyuu", Category = film, Price = 143.50m, Tag = Anime },
                 new Product { ProductName = "Inazuma eleven", Category = film, Price = 69.69m, Tag = Anime }
+
+                //Duy's database
+                new Product { ProductName = "Attack on Titan", Category = film, Price = 19.50m, Tag = Anime },
+                new Product { ProductName = "Fast and Furious 8", Category = film, Price = 20.50m, Tag = Movie },
+                new Product { ProductName = "Yêu là tha thu", Category = music, Price = 9.50m, Tag = Vpop },
+                new Product { ProductName = "Knock Knock", Category = music, Price = 5.60m, Tag = Kpop },
+                new Product { ProductName = "John Wick", Category = music, Price = 143.50m, Tag = Movie },
+                new Product { ProductName = "Drake Illo Fall", Category = music, Price = 44.35m, Tag = Usuk },
+                new Product { ProductName = "Bad Blood", Category = music, Price = 2.50m, Tag = Usuk },
+                new Product { ProductName = "Death Note", Category = film, Price = 100.50m, Tag = Anime },
+                new Product { ProductName = "Tokyo Ghoul", Category = film, Price = 200m, Tag = Anime },
+                new Product { ProductName = "Big Hero 6", Category = film, Price = 1.50m, Tag = Cartoon },
+                new Product { ProductName = "Tom and Jerry", Category = film, Price = 18.50m, Tag = Cartoon },
+                new Product { ProductName = "Pokemon: Magiana", Category = film, Price = 58.69m, Tag = Anime },
+                new Product { ProductName = "Jason Bourne", Category = film, Price = 69.69m, Tag = Movie }
             );
             context.SaveChanges();
 
@@ -263,6 +278,35 @@ namespace MusicMediaWebShop.Models
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Pokemon"), TagDetail = Shounen },
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "High kyuu"), TagDetail = Shounen },
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Inazuma eleven"), TagDetail = Shounen }
+
+                //Duy's database
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Attack on Titan"), TagDetail = Shounen },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Attack on Titan"), TagDetail = Horror },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Attack on Titan"), TagDetail = Action },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Fast and Furious 8"), TagDetail = Romance },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Fast and Furious 8"), TagDetail = Comedy },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Fast and Furious 8"), TagDetail = Action },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Yêu là tha thu"), TagDetail = Pop },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Knock Knock"), TagDetail = Pop },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Knock Knock"), TagDetail = Rock },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "John Wick"), TagDetail = Action },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "John Wick"), TagDetail = Fantasy },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Drake Illo Fall"), TagDetail = Pop },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Drake Illo Fall"), TagDetail = RBSoul },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Bad Blood"), TagDetail = Rock },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Death Note"), TagDetail = Horror },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Tokyo Ghoul"), TagDetail = Shounen },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Tokyo Ghoul"), TagDetail = Horror },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Tokyo Ghoul"), TagDetail = Action },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Big Hero 6"), TagDetail = Funny },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Big Hero 6"), TagDetail = Education },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Big Hero 6"), TagDetail = Action },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Tom and Jerry"), TagDetail = Funny },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Tom and Jerry"), TagDetail = Education },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Pokemon: Magiana"), TagDetail = Action },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Pokemon: Magiana"), TagDetail = Funny },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Jason Bourne"), TagDetail = Action },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Jason Bourne"), TagDetail = Funny }
                 );
             context.SaveChanges();
         }

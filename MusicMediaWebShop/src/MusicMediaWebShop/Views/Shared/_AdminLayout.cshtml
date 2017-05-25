@@ -271,12 +271,17 @@
                         <li>
                             <a asp-action="Index" asp-controller="Admin" ><i class="fa fa-dashboard fa-fw"></i> Home</a>
                         </li>
-                        
                         <li>
-                            <a asp-action="Music" asp-controller="Admin"><i class="fa fa-table fa-fw"></i> Music</a>
+                            <a asp-action="Product" asp-controller="Admin"><i class="fa fa-product-hunt fa-fw"></i> Product</a>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            <a asp-action="Music" asp-controller="Admin"><i class="fa fa-music fa-fw"></i> Music</a>
+                        </li>
+                        <li>
+                            <a asp-action="Film" asp-controller="Admin"><i class="fa fa-file-video-o fa-fw"></i> Film</a>
+                        </li>
+                        <li>
+                            <a asp-action="Order" asp-controller="Admin"><i class="fa fa-shopping-cart fa-fw"></i> Order</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
@@ -376,5 +381,13 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="~/vendor/dist/js/sb-admin-2.js"></script>
+
+    <script>
+            $(document).ready(function () {
+                $('#dataTables-example').DataTable({
+                    responsive: true
+                });
+            });
+    </script>
 </body>
 </html>
