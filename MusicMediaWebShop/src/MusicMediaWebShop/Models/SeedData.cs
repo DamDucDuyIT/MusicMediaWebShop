@@ -159,7 +159,7 @@ namespace MusicMediaWebShop.Models
                 new Product { ProductName = "Bleach", Category = film, Price = 143.50m, Tag = Anime },
                 new Product { ProductName = "Pokemon", Category = film, Price = 69.69m, Tag = Anime },
                 new Product { ProductName = "High kyuu", Category = film, Price = 143.50m, Tag = Anime },
-                new Product { ProductName = "Inazuma eleven", Category = film, Price = 69.69m, Tag = Anime }
+                new Product { ProductName = "Inazuma eleven", Category = film, Price = 69.69m, Tag = Anime },
 
                 //Duy's database
                 new Product { ProductName = "Attack on Titan", Category = film, Price = 19.50m, Tag = Anime },
@@ -277,7 +277,7 @@ namespace MusicMediaWebShop.Models
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Bleach"), TagDetail = Shounen },
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Pokemon"), TagDetail = Shounen },
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "High kyuu"), TagDetail = Shounen },
-                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Inazuma eleven"), TagDetail = Shounen }
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Inazuma eleven"), TagDetail = Shounen },
 
                 //Duy's database
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Attack on Titan"), TagDetail = Shounen },
