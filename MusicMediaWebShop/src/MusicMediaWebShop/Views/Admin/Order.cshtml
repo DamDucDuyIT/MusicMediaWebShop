@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    DataTables Advanced Tables
+                    Order
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -27,8 +27,8 @@
                                 <tr class="odd gradeX">
                                     <td>@order.Name</td>
                                     <td>@order.PhoneNumber</td>
-                                    <td>@order.HouseNumber+", "+@order.Street+", "+@order.Ward+", "+@order.District+", "+@order.City</td>
-                                    <td class="center"><a asp-action="OrderDetail" asp-controller="Admin">View Detail</a></td>
+                                    <td>@order.HouseNumber, Street: @order.Street, Ward: @order.Ward, District: @order.District, City: @order.City</td>
+                                    <td class="center"><a asp-action="OrderDetail" asp-controller="Admin" asp-route-id="@order.ShippingInfoID">View Detail</a></td>
                                 </tr>
                             }
 

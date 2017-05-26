@@ -59,9 +59,18 @@ namespace MusicMediaWebShop.Models
             return View(shippinginfosList);
         }
 
+        public async Task<IActionResult> Users()
+        {
+            var userList = await _context.Users.ToListAsync();
+            return View(userList);
+        }
+
         public async Task<IActionResult> OrderDetail(int? id)
         {
-            ShippingInfo order = await _context.ShippingInfos.FirstOrDefaultAsync(s=>s.ShippingInfoID==id);
+            ShippingInfo order = await _context.ShippingInfos
+                                    .Include(o=>o.LineItems)
+                                        .ThenInclude(p=>p.Product)
+                                .FirstOrDefaultAsync(s=>s.ShippingInfoID==id);
             return  View(order);
         }
     }

@@ -1,8 +1,102 @@
-﻿@model IEnumerable<ShippingInfo>
+﻿@model ShippingInfo
 @{
     ViewData["Title"] = "Admin_OrderDetail";
     Layout = "_AdminLayout";
 }
 <div id="page-wrapper">
-    
+    <table class="table table-md table-striped table-bordered" style="margin-top: 1em;">
+        <thead>
+            <tr class="tableHead">
+                <th style="text-align:center">OrderID</th>
+                <th style="text-align:center">Customer name</th>
+                <th style="text-align:center">Product</th>
+                <th style="text-align:center">Quantity</th>
+                <th style="text-align:center">Product Price</th>
+                <th style="text-align:center">Tổng Giá</th>
+                <th style="text-align:center"></th>
+            </tr>
+        </thead>
+        <tbody style="text-align:center">
+          
+                <tr>
+                    <td style="text-align: center">
+                        <a>@Model.ShippingInfoID</a>
+                    </td>
+                    <td>
+                        @Model.Name
+                    </td>
+                    <td>
+                        @foreach (var o in Model.LineItems)
+                        {
+                            <p>@o.Product.ProductName</p>
+                        }
+                    </td>
+                    <td style="text-align: center">
+                        @foreach (var o in Model.LineItems)
+                        {
+                            <p>@o.Quanlity</p>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var o in Model.LineItems)
+                        {
+                            <p>@o.Cost</p>
+                        }
+                    </td>
+                    <td>
+                        @foreach (var o in Model.LineItems)
+                        {
+                            <p>@o.Subtotal</p>
+                        }
+                    </td>
+                    <td>
+                        <div style="width:8em">                           
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Giao
+                                </button>                          
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Hủy
+                                </button>
+                        </div>
+
+                    </td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+
+    <div class="form-group">
+        <label>Total:</label>
+        <div>
+            <div>
+                 @{
+                    decimal sum = 0.0m;
+                    foreach (var o in Model.LineItems)
+                    {
+                        sum += o.Subtotal;
+                    }
+                    <input value="@sum $" type="text" placeholder="" class="form-control input-md" required="" playholder="" readonly>       
+                 }
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Phone</label>
+        <div>
+            <div>
+                <input value="@Model.PhoneNumber" type="text" placeholder="" class="form-control input-md" required="" playholder="" readonly>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Address</label>
+        <div>
+            <div>
+                <input value="@Model.HouseNumber, Street: @Model.Street, Ward: @Model.Ward, District: @Model.District, City: @Model.City" type="text" placeholder="" class="form-control input-md" required="" playholder="" readonly>
+            </div>
+        </div>
+    </div>
 </div>
