@@ -18,6 +18,15 @@ namespace MusicMediaWebShop.Models
         [Required(ErrorMessage = "Please enter a name")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "Please enter your bank code")]
+        [Display(Name = "Bank Code")]
+        public string BankCode { get; set; }
+
+        [Required(ErrorMessage = "Please enter your email")]
+        
+        public string Email { get; set; }
+
+
         [Required(ErrorMessage = "Please enter your house number")]
         [Display(Name = "House Number")]
         public string HouseNumber { get; set; }

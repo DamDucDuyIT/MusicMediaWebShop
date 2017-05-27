@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <Content Include="wwwroot\css\film-item.css" />
+    <Content Include="wwwroot\huy-don-hang.html" />
+    <Content Include="wwwroot\xac-nhan-don-hang.html" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,6 +53,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.0.0">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="System.Xml.XmlDocument" Version="4.3.0" />
   </ItemGroup>
 
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
@@ -66,6 +69,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CheckoutAPI\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
 
