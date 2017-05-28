@@ -13,18 +13,20 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach (var product in @Model)
             {
                 <tr>
-                    <td>@product.ProductName</td>
+                    <td>
+                        <a asp-controller="Music"
+                           asp-action="Index"
+                           asp-route-id="@product.ProductID">@product.ProductName</a>
+                    </td>
                     <td>@product.Price</td>
                     <td>
                         @Html.Partial("_ProductSummary", product)
                     </td>
                 </tr>
             }
-
         </tbody>
     </table>
 </div>

@@ -12,6 +12,7 @@ namespace MusicMediaWebShop.Models
         public decimal Price { get; set; }
         public string ProductDescription { get; set; }
         public string Productimage { get; set; }
+        public string ProductURL { get; set; }
         public Category Category { get; set; }
         public Tag Tag { get; set; }
         public ICollection<TagHelper> TagHelper { get; set; }

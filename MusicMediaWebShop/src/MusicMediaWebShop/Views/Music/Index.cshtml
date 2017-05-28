@@ -1,0 +1,70 @@
+﻿@model Product
+
+<audio id="audio" controls="controls" autoplay="autoplay" tabindex="0">
+    <source src="~/lib/data/@Html.DisplayFor(m => m.ProductURL)" type="audio/mpeg" />
+    Sorry, your browser does not support HTML5 audio.
+</audio>
+<ul id="playlist">
+    <li class="active">
+        <a href="~/lib/data/@Html.DisplayFor(m => m.ProductURL)">
+            @Html.DisplayFor(m => m.ProductName)
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/CryCry.mp3">
+            Cry Cry
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/YeuLaThaThu.mp3">
+            Yêu Là Tha Thu
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/DayByDay.mp3">
+            Day by Day
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/ChiLaGiacMo.mp3">
+            Let Me Love You
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/CryCry.mp3">
+            Nơi Nào Có Em
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/YeuLaThaThu.mp3">
+            Sexy is zero
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/DayByDay.mp3">
+            Knock Knock
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/ChiLaGiacMo.mp3">
+            Maria
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/CryCry.mp3">
+            Ano Hana
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/YeuLaThaThu.mp3">
+            Happy
+        </a>
+    </li>
+    <li>
+        <a href="~/lib/data/DayByDay.mp3">
+            Why so seriout
+        </a>
+    </li>
+</ul>
+<script src="~/js/music.js"></script>
+<link href="~/css/music.css" rel="stylesheet" />

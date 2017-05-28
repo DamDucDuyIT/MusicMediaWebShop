@@ -31,7 +31,16 @@ namespace MusicMediaWebShop.Controllers
             return View(await _repository.GetAllMusics(TagDetail, Tag));
         }
 
-   
+        public async Task<IActionResult> Index(int id)
+        {
+            var product = await _repository.SearchAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
     }
 }
 
