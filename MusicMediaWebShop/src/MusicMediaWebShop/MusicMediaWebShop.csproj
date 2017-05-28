@@ -14,8 +14,10 @@
   <ItemGroup>
     <Content Include="wwwroot\css\film-item.css" />
     <Content Include="wwwroot\css\music.css" />
+    <Content Include="wwwroot\css\video.css" />
     <Content Include="wwwroot\huy-don-hang.html" />
     <Content Include="wwwroot\js\music.js" />
+    <Content Include="wwwroot\js\video.js" />
     <Content Include="wwwroot\lib\data\ChiLaGiacMo.jpg" />
     <Content Include="wwwroot\lib\data\ChiLaGiacMo.mp3" />
     <Content Include="wwwroot\lib\data\CryCry.jpg" />
@@ -30,6 +32,12 @@
     <Content Include="wwwroot\lib\data\TamHonCuaDa.mp3" />
     <Content Include="wwwroot\lib\data\YeuLaThaThu.jpg" />
     <Content Include="wwwroot\lib\data\YeuLaThaThu.mp3" />
+    <Content Include="wwwroot\lib\media\CryCry.jpg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\lib\media\EmChua18.mp4" />
+    <Content Include="wwwroot\lib\media\FapTV.mp4" />
+    <Content Include="wwwroot\lib\media\FastAndFurious8.mp4" />
     <Content Include="wwwroot\xac-nhan-don-hang.html" />
   </ItemGroup>
 
