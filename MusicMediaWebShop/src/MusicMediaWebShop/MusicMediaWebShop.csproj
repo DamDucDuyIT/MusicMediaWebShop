@@ -38,6 +38,7 @@
     <Content Include="wwwroot\lib\media\EmChua18.mp4" />
     <Content Include="wwwroot\lib\media\FapTV.mp4" />
     <Content Include="wwwroot\lib\media\FastAndFurious8.mp4" />
+    <Content Include="wwwroot\UserGuide.html" />
     <Content Include="wwwroot\xac-nhan-don-hang.html" />
   </ItemGroup>
 
