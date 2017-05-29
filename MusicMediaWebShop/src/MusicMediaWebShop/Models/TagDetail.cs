@@ -10,5 +10,6 @@ namespace MusicMediaWebShop.Models
         public int TagDetailID { get; set; }
         public string TagDetailName { get; set; }
         public ICollection<TagHelper> TagHelper { get; set; }
+        public ICollection<TagSupport> TagSupports { get; set; }
     }
 }

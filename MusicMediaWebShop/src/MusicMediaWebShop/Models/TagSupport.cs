@@ -9,6 +9,7 @@ namespace MusicMediaWebShop.Models
     {
         public int TagSupportID { get; set; }
         public Tag Tag { get; set; }
+        
         public TagDetail TagDetail { get; set; }
     }
 }

@@ -1,0 +1,48 @@
+﻿@model TagDetail
+@{
+    ViewData["Title"] = "Admin_TagDetailEdit";
+    Layout = "_AdminLayout";
+}
+<div id="page-wrapper">
+    <form name="myform" asp-action="TagDetailAdd" asp-controller="Admin" enctype="multipart/form-data">
+        <div class="form-horizontal">
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Tag Detail Name</label>
+                <div class="col-md-6">
+                    <input asp-for="TagDetailName" class="form-control" maxlength="30" />
+                    <span asp-validation-for="TagDetailName" class="text-danger" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-4 control-label">Category</label>
+                    <div class="col-md-6">
+                        @{
+                            List<String> tags = ViewBag.Tags;
+                            
+                            foreach (var item in tags)
+                            {
+                                <input type="checkbox" name="selectedTag" value="@item"  /> <label>@item</label><br />
+
+                            }
+
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-default">Create</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

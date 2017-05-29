@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Admin_TagProduct";
+    Layout = "_AdminLayout";
+}
+<div id="page-wrapper">
+    <div class="row" style="margin-bottom:15px">
+
+        <a class="btn btn-success" asp-action="ProductAdd" asp-controller="Admin">
+            <label>Add New Product</label>
+            <i class="fa fa-plus-circle"></i>
+        </a>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Product
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Price </th>
+                                <th>ProductDescription</th>
+                                <th>Category</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var product in Model)
+                            {
+                                <tr class="odd gradeX">
+                                    <td>@product.ProductName</td>
+                                    <td>@product.Price</td>
+                                    <td>@product.ProductDescription</td>
+                                    <td class="center">@product.Category.CategoryName</td>
+                                    <td>
+                                        <a asp-action="ProductEdit" asp-controller="Admin" asp-route-id="@product.ProductID" class="btn btn-sm btn-info">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="Admin" asp-route-id="@product.ProductID" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-eraser"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+</div>

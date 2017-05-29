@@ -9,5 +9,8 @@ namespace MusicMediaWebShop.Models
     {
         public int TagID { get; set; }
         public string TagName { get; set; }
+        public ICollection<Product> Products { get; set; }
+        public ICollection<TagSupport> TagSupports { get; set; }
+        public ICollection<CategorySupport> CategorySupports { get; set; }
     }
 }
