@@ -32,6 +32,24 @@ namespace MusicMediaWebShop.Models
             context.Tags.AddRange(Kpop, Vpop, Jpop, Usuk,Series,Movie,Cartoon,Anime);
             context.SaveChanges();
 
+            Category music = new Category { CategoryName = "Music" };
+            Category film = new Category { CategoryName = "Film" };
+            context.Categories.AddRange(music, film);
+            context.SaveChanges();
+
+            context.CategorySupport.AddRange(
+                new CategorySupport { Category = music, Tag = Kpop },
+                new CategorySupport { Category = music, Tag = Vpop },
+                new CategorySupport { Category = music, Tag = Jpop },
+                new CategorySupport { Category = music, Tag = Usuk },
+
+                new CategorySupport { Category = film, Tag = Series },
+                new CategorySupport { Category = film, Tag = Movie },
+                new CategorySupport { Category = film, Tag = Cartoon },
+                new CategorySupport { Category = film, Tag = Anime }
+             );
+            context.SaveChanges();
+
             TagDetail Rock = new TagDetail { TagDetailName = "Rock" };
             TagDetail Pop = new TagDetail { TagDetailName = "Pop" };
             TagDetail Country = new TagDetail { TagDetailName = "Country" };
@@ -54,9 +72,61 @@ namespace MusicMediaWebShop.Models
                 Fantasy,Romance,Sport,Funny,SuperHero,Education,Harem,Casual,Shounen);
             context.SaveChanges();
 
-            Category music = new Category { CategoryName = "Music" };
-            Category film = new Category { CategoryName = "Film" };
-            context.Categories.AddRange(music, film);
+            context.TagSupport.AddRange(
+                new TagSupport { Tag = Usuk, TagDetail = Rock },
+                new TagSupport { Tag = Usuk, TagDetail = Pop },
+                new TagSupport { Tag = Usuk, TagDetail = Country },
+                new TagSupport { Tag = Usuk, TagDetail = Dance },
+                new TagSupport { Tag = Usuk, TagDetail = Rap },
+                new TagSupport { Tag = Usuk, TagDetail = RBSoul },
+
+                new TagSupport { Tag = Kpop, TagDetail = Rock },
+                new TagSupport { Tag = Kpop, TagDetail = Pop },
+                new TagSupport { Tag = Kpop, TagDetail = Country },
+                new TagSupport { Tag = Kpop, TagDetail = Dance },
+                new TagSupport { Tag = Kpop, TagDetail = Rap },
+                new TagSupport { Tag = Kpop, TagDetail = RBSoul },
+
+                new TagSupport { Tag = Jpop, TagDetail = Rock },
+                new TagSupport { Tag = Jpop, TagDetail = Pop },
+                new TagSupport { Tag = Jpop, TagDetail = Country },
+                new TagSupport { Tag = Jpop, TagDetail = Dance },
+                new TagSupport { Tag = Jpop, TagDetail = Rap },
+                new TagSupport { Tag = Jpop, TagDetail = RBSoul },
+
+                new TagSupport { Tag = Vpop, TagDetail = Rock },
+                new TagSupport { Tag = Vpop, TagDetail = Pop },
+                new TagSupport { Tag = Vpop, TagDetail = Country },
+                new TagSupport { Tag = Vpop, TagDetail = Dance },
+                new TagSupport { Tag = Vpop, TagDetail = Rap },
+                new TagSupport { Tag = Vpop, TagDetail = RBSoul },
+
+                new TagSupport { Tag = Series, TagDetail = Action },
+                new TagSupport { Tag = Series, TagDetail = Comedy },
+                new TagSupport { Tag = Series, TagDetail = Horror },
+                new TagSupport { Tag = Series, TagDetail = Fantasy },
+                new TagSupport { Tag = Series, TagDetail = Romance },
+                new TagSupport { Tag = Series, TagDetail = Sport },
+
+                new TagSupport { Tag = Movie, TagDetail = Action },
+                new TagSupport { Tag = Movie, TagDetail = Comedy },
+                new TagSupport { Tag = Movie, TagDetail = Horror },
+                new TagSupport { Tag = Movie, TagDetail = Fantasy },
+                new TagSupport { Tag = Movie, TagDetail = Romance },
+                new TagSupport { Tag = Movie, TagDetail = Sport },
+
+                new TagSupport { Tag = Cartoon, TagDetail = SuperHero },
+                new TagSupport { Tag = Cartoon, TagDetail = Education },
+                new TagSupport { Tag = Cartoon, TagDetail = Funny },
+                new TagSupport { Tag = Cartoon, TagDetail = Fantasy },
+
+                new TagSupport { Tag = Anime, TagDetail = Romance },
+                new TagSupport { Tag = Anime, TagDetail = Harem },
+                new TagSupport { Tag = Anime, TagDetail = Casual },
+                new TagSupport { Tag = Anime, TagDetail = Fantasy },
+                new TagSupport { Tag = Anime, TagDetail = Shounen },
+                new TagSupport { Tag = Anime, TagDetail = Sport }
+            );
             context.SaveChanges();
 
             context.Products.AddRange(

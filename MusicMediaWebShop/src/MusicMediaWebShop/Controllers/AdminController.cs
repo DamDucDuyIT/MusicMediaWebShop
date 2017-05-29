@@ -73,5 +73,120 @@ namespace MusicMediaWebShop.Models
                                 .FirstOrDefaultAsync(s=>s.ShippingInfoID==id);
             return  View(order);
         }
+
+        public async Task<IActionResult> ProductEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            Product product = await _context.Products
+                                .Include(c=>c.Category)
+                                .SingleOrDefaultAsync(p => p.ProductID == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            await PopulateMusicTag();
+            await PopulateFilmTag();
+            return View(product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ProductEdit(int id, [Bind("ProductID,ProductDescription,ProductName,Price")] Product product, string selectedCategory)
+        {
+            if (id != product.ProductID)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    product.Category = _context.Categories.FirstOrDefault(c => c.CategoryName == selectedCategory);
+                    _context.Update(product);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductExists(product.ProductID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Product");
+            }
+            return View(product);
+        }
+
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Products.SingleOrDefaultAsync(p => p.ProductID == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] =
+                    "Delete failed. Try again, and if the problem persists " +
+                    "see your system administrator.";
+            }
+
+            return View(product);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+           Product product = await _context.Products
+                .Include(t=>t.TagHelper)
+                .SingleOrDefaultAsync(p => p.ProductID == id);
+            var TagHelperList = product.TagHelper.ToList();
+            foreach (var taghelper in TagHelperList)
+            {
+                _context.TagHelpers.Remove(taghelper);
+                await _context.SaveChangesAsync();
+            }
+            _context.Products.Remove(product);
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Product");
+        }
+
+        private bool ProductExists(int productID)
+        {
+            return _context.Products.Any(e => e.ProductID == productID);
+        }
+
+        private async Task PopulateMusicTag()
+        {
+            var allTags = await _context.CategorySupport
+                .Include(t=>t.Tag)
+                .Include(c=>c.Category)
+                .Where(c=>c.Category.CategoryName=="Music").ToListAsync();
+            ViewData["MusicTags"] = allTags;
+        }
+
+        private async Task PopulateFilmTag()
+        {
+            var allTags = await _context.CategorySupport
+                .Include(t => t.Tag)
+                .Include(c => c.Category)
+                .Where(c => c.Category.CategoryName == "Film").ToListAsync();
+            ViewData["FilmTags"] = allTags;
+        }
     }
 }
