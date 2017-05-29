@@ -74,7 +74,45 @@ namespace MusicMediaWebShop.Models
             return  View(order);
         }
 
-        public async Task<IActionResult> ProductEdit(int? id)
+        public async Task<IActionResult> ProductAdd()
+        {
+            await PopulateMusicTag();
+            await PopulateFilmTag();                
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ProductAdd([Bind("ProductID,ProductDescription,ProductName,Price")] Product product, string selectedCategory, string selectedTag, string[] tagHelper)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    product.Category = _context.Categories.FirstOrDefault(c => c.CategoryName == selectedCategory);
+                    product.Tag = _context.Tags.FirstOrDefault(c => c.TagName == selectedTag);
+                    _context.Add(product);
+                    await _context.SaveChangesAsync();
+
+                    foreach (var item in tagHelper)
+                    {
+                        var tagDetail = await _context.TagDetails.SingleOrDefaultAsync(t => t.TagDetailName == item);
+                        _context.TagHelpers.Add(new TagHelper { Product = product, TagDetail = tagDetail });
+                    }
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Product");
+                }
+            }
+            catch (DbUpdateException /* ex */)
+            {
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
+            }
+            return View(product);
+        }
+        public async Task<IActionResult> ProductEdit(int id)
         {
             if (id == null)
             {
@@ -89,12 +127,13 @@ namespace MusicMediaWebShop.Models
             }
             await PopulateMusicTag();
             await PopulateFilmTag();
+            
             return View(product);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ProductEdit(int id, [Bind("ProductID,ProductDescription,ProductName,Price")] Product product, string selectedCategory)
+        public async Task<IActionResult> ProductEdit(int id, [Bind("ProductID,ProductDescription,ProductName,Price")] Product product, string selectedCategory,string selectedTag, string[] tagHelper)
         {
             if (id != product.ProductID)
             {
@@ -105,8 +144,11 @@ namespace MusicMediaWebShop.Models
                 try
                 {
                     product.Category = _context.Categories.FirstOrDefault(c => c.CategoryName == selectedCategory);
+                    product.Tag = _context.Tags.FirstOrDefault(c => c.TagName == selectedTag);
                     _context.Update(product);
                     await _context.SaveChangesAsync();
+
+                    await StudentUpdateTagAsync(id,tagHelper);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -122,6 +164,25 @@ namespace MusicMediaWebShop.Models
                 return RedirectToAction("Product");
             }
             return View(product);
+        }
+
+        private async Task StudentUpdateTagAsync(int id, string[] tagHelper)
+        {
+            var product = await _context.Products
+                .Include(t=>t.TagHelper)
+                .SingleOrDefaultAsync(p => p.ProductID == id);
+            foreach (var item in product.TagHelper)
+            {
+                _context.TagHelpers.Remove(item);
+            }
+            await _context.SaveChangesAsync();
+
+            foreach (var item in tagHelper)
+            {
+                var tagDetail = await _context.TagDetails.SingleOrDefaultAsync(t => t.TagDetailName == item);
+                _context.TagHelpers.Add(new TagHelper { Product = product, TagDetail = tagDetail });
+            }
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
@@ -166,6 +227,28 @@ namespace MusicMediaWebShop.Models
             return RedirectToAction("Product");
         }
 
+        [HttpPost]
+        public JsonResult GetTagSupport(String TagName,int? id)
+        {
+            var allTags = _context.TagHelpers
+                            .Include(t => t.TagDetail)
+                            .Include(p => p.Product)
+                            .Where(p => p.Product.ProductID == id).Select(t => t.TagDetail.TagDetailName).ToList();
+            var tagSupportList = _context.TagSupport
+                            .Include(t => t.Tag)
+                            .Include(t=>t.TagDetail)
+                            .Where(t => t.Tag.TagName == TagName)
+                            .Select(t=>new {
+                                tagDetailName=t.TagDetail.TagDetailName,
+                                assigned = allTags.Contains(t.TagDetail.TagDetailName)
+                            })
+                            .ToList();
+            return Json(new
+            {
+                list=tagSupportList
+            });
+        }
+
         private bool ProductExists(int productID)
         {
             return _context.Products.Any(e => e.ProductID == productID);
@@ -188,5 +271,7 @@ namespace MusicMediaWebShop.Models
                 .Where(c => c.Category.CategoryName == "Film").ToListAsync();
             ViewData["FilmTags"] = allTags;
         }
+
+
     }
 }

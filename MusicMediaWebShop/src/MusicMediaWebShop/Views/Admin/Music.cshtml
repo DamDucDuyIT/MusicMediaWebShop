@@ -19,6 +19,7 @@
                                 <th>Price </th>
                                 <th>ProductDescription</th>
                                 <th>Category</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,14 @@
                                     <td>@product.Price</td>
                                     <td>@product.ProductDescription</td>
                                     <td class="center">@product.Category.CategoryName</td>
+                                    <td>
+                                        <a asp-action="ProductEdit" asp-controller="Admin" asp-route-id="@product.ProductID" class="btn btn-sm btn-info">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="Admin" asp-route-id="@product.ProductID" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-eraser"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             }
 
