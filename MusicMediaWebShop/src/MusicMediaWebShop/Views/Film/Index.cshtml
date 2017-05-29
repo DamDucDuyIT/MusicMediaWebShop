@@ -1,0 +1,30 @@
+﻿@model Product
+
+<h2 id="h2">@Html.DisplayFor(m => m.ProductName)</h2>
+
+<div>
+    <video id="video" width="640" height="360" controls>
+        <source src="~/lib/media/@Html.DisplayFor(m => m.ProductURL)" type="video/mp4" poster=@Html.DisplayFor(m => m.Productimage)>
+        <source src="~/lib/media/@Html.DisplayFor(m => m.ProductURL)" type="video/ogg">
+        Sorry, your browser doesn't support embedded videos
+        <track src="devstories-en.vtt" label="English subtitles"
+               kind="subtitles" srclang="en" default>
+    </video>
+
+    <ul id="playlist">
+        <li class="active">
+            <a href="~/lib/data/@Html.DisplayFor(m => m.ProductURL)">
+                @Html.DisplayFor(m => m.ProductName)
+            </a>
+        </li>
+        <li>
+            <a href="~/lib/media/EmChua18.mp4">
+                Em chưa 18
+            </a>
+        </li>
+        <li>
+            <a href="~/lib/media/FapTV.mp4">
+                FAPTV
+            </a>
+    </ul>
+</div>

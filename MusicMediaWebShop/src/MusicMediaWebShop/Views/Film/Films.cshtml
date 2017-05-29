@@ -5,10 +5,12 @@
             @foreach (var product in @Model)
             {
                 <li class="film-item">
-                    <label style="width:100%">@product.ProductName</label>
-                    <a style="width:100%" href="detal.html">
+                    <label style="width:100%"><a asp-controller="Film"
+                                                 asp-action="Index"
+                                                 asp-route-id="@product.ProductID">@product.ProductName</a></label>
+                    @*<a style="width:100%" href="detal.html">
                         <img alt="@product.ProductName" src="@product.Productimage"/>
-                    </a>
+                    </a>*@
                     <label style="width:100%">
                         @product.Price
                     </label>

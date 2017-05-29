@@ -156,10 +156,10 @@ namespace MusicMediaWebShop.Models
                 new Product { ProductName = "Criminal", Category = music, Price = 12.60m, Tag = Usuk },
                 new Product { ProductName = "The day you went away", Category = music, Price = 5.60m, Tag = Usuk },
 
-                new Product { ProductName = "Chỉ là giấc mơ", Category = music, Price = 12.60m, Tag = Vpop },
-                new Product { ProductName = "Tâm hồn của đá", Category = music, Price = 5.60m, Tag = Vpop },
-                new Product { ProductName = "Yêu là tha thu", Category = music, Price = 12.60m, Tag = Vpop },
-                new Product { ProductName = "Đã từng vô giá", Category = music, Price = 5.60m, Tag = Vpop },
+                new Product { ProductName = "Chỉ là giấc mơ", Category = music, Price = 12.60m, Tag = Vpop, ProductURL = "ChiLaGiacMo.mp3" },
+                new Product { ProductName = "Tâm hồn của đá", Category = music, Price = 5.60m, Tag = Vpop, ProductURL = "TamHonCuaDa.mp3" },
+                new Product { ProductName = "Yêu là tha thu", Category = music, Price = 12.60m, Tag = Vpop, ProductURL = "YeuLaThaThu.mp3" },
+                new Product { ProductName = "Đã từng vô giá", Category = music, Price = 5.60m, Tag = Vpop, ProductURL = "DaTungVoGia.mp3" },
                 new Product { ProductName = "Con bướm xuân", Category = music, Price = 5.60m, Tag = Vpop },
                 new Product { ProductName = "Let me be your love", Category = music, Price = 12.60m, Tag = Vpop },
                 new Product { ProductName = "Bà tôi", Category = music, Price = 5.60m, Tag = Vpop },
@@ -183,7 +183,7 @@ namespace MusicMediaWebShop.Models
                 new Product { ProductName = "P.P.M", Category = music, Price = 5.60m, Tag = Jpop },
 
 
-                new Product { ProductName = "The transporter", Category = film, Price = 69.69m, Tag = Series },
+                new Product { ProductName = "Fast and furios 8", Category = film, Price = 69.69m, Tag = Series, ProductURL= "FastAndFurious8.mp4", Productimage = "CryCry.jpg" },
                 new Product { ProductName = "Taken", Category = film, Price = 143.50m, Tag = Series },
                 new Product { ProductName = "The big bang theory", Category = film, Price = 69.69m, Tag = Series },
                 new Product { ProductName = "Shameless", Category = film, Price = 143.50m, Tag = Series },
@@ -301,7 +301,7 @@ namespace MusicMediaWebShop.Models
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Missing"), TagDetail = RBSoul },
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "P.P.M"), TagDetail = RBSoul },
 
-                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "The transporter"), TagDetail = Action },
+                new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Fast and furios 8"), TagDetail = Action },
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Taken"), TagDetail = Action },
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "The big bang theory"), TagDetail = Comedy },
                 new TagHelper { Product = context.Products.FirstOrDefault(p => p.ProductName == "Shameless"), TagDetail = Comedy },
