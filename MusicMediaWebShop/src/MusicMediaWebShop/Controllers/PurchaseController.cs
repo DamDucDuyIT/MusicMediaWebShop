@@ -13,6 +13,7 @@ using MusicStore.Services.NganLuongAPI;
 
 namespace MusicMediaWebShop.Controllers
 {
+    [Authorize]
     public class PurchaseController : Controller
     {
         // GET: /<controller>/
