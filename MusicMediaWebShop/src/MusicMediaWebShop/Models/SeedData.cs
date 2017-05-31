@@ -29,7 +29,7 @@ namespace MusicMediaWebShop.Models
             Tag Movie = new Tag { TagName = "Movie" };
             Tag Cartoon = new Tag { TagName = "Cartoon" };
             Tag Anime = new Tag { TagName = "Anime" };
-            context.Tags.AddRange(Kpop, Vpop, Jpop, Usuk,Series,Movie,Cartoon,Anime);
+            context.Tags.AddRange(Kpop, Vpop, Jpop, Usuk, Series, Movie, Cartoon, Anime);
             context.SaveChanges();
 
             Category music = new Category { CategoryName = "Music" };
@@ -68,8 +68,8 @@ namespace MusicMediaWebShop.Models
             TagDetail Harem = new TagDetail { TagDetailName = "Harem" };
             TagDetail Casual = new TagDetail { TagDetailName = "Casual" };
             TagDetail Shounen = new TagDetail { TagDetailName = "Shounen" };
-            context.TagDetails.AddRange(Rock,Pop,Country,Dance,Rap,RBSoul,Action,Comedy,Horror,
-                Fantasy,Romance,Sport,Funny,SuperHero,Education,Harem,Casual,Shounen);
+            context.TagDetails.AddRange(Rock, Pop, Country, Dance, Rap, RBSoul, Action, Comedy, Horror,
+                Fantasy, Romance, Sport, Funny, SuperHero, Education, Harem, Casual, Shounen);
             context.SaveChanges();
 
             context.TagSupport.AddRange(
@@ -159,7 +159,7 @@ namespace MusicMediaWebShop.Models
                 new Product { ProductName = "Chỉ là giấc mơ", Category = music, Price = 12.60m, Tag = Vpop, ProductURL = "ChiLaGiacMo.mp3" },
                 new Product { ProductName = "Tâm hồn của đá", Category = music, Price = 5.60m, Tag = Vpop, ProductURL = "TamHonCuaDa.mp3" },
                 new Product { ProductName = "Yêu là tha thu", Category = music, Price = 12.60m, Tag = Vpop, ProductURL = "YeuLaThaThu.mp3" },
-                new Product { ProductName = "Đã từng vô giá", Category = music, Price = 5.60m, Tag = Vpop, ProductURL = "DaTungVoGia.mp3" },
+                new Product { ProductName = "Đã từng vô giá", Category = music, Price = 5.60m, Tag = Vpop, ProductURL = "DaTungVoGia.mp3", ProductDescription = "Bài hát: Được trình bày bởi Mr.Siro<br><br> Anh đã biết..em nhớ thầm ai suốt một thời gian<br> Người đó ở cạnh bên..và kiên nhẫn đợi chờ<br> Giọt nước mắt mà anh khóc<br> Chẳng phải do duyên mình chấm dứt<br> Mà chính là phận mình vẫn quá sớm để lụi tàn<br>Hạnh phúc cớ sao càng giữ càng mong manh<br> Có những nỗi đau ùa đến chẳng thể lành..<br><br> Chorus:<br> Tình đẹp như phép màu... ta gặp nhau<br> Ngập trong bao đắm say mà không biết kết thúc này...<br> Một ngày em đổi thay quên hết mối tình đã từng vô giá<br>Chỉ có anh là người được biết sau cùng..<br><br> Giang tấu:<br> Em ơi..anh không đứng vững<br> khi đọc lời ngọt ngào tin nhắn kia<br> là em...đã gửi nhầm anh phải không ?<br><br> Anh cứ bước..vô thức...<br> chẳng cần biết mình ở đâu<br> Giọng em..trong suy nghĩ... " },
                 new Product { ProductName = "Con bướm xuân", Category = music, Price = 5.60m, Tag = Vpop },
                 new Product { ProductName = "Let me be your love", Category = music, Price = 12.60m, Tag = Vpop },
                 new Product { ProductName = "Bà tôi", Category = music, Price = 5.60m, Tag = Vpop },
@@ -183,7 +183,7 @@ namespace MusicMediaWebShop.Models
                 new Product { ProductName = "P.P.M", Category = music, Price = 5.60m, Tag = Jpop },
 
 
-                new Product { ProductName = "Fast and furios 8", Category = film, Price = 69.69m, Tag = Series, ProductURL= "FastAndFurious8.mp4", Productimage = "CryCry.jpg" },
+                new Product { ProductName = "Fast and furios 8", Category = film, Price = 69.69m, Tag = Series, ProductURL = "FastAndFurious8.mp4", ProductDescription = "Đạo diễn: F. Gary Gray.<br><br>Diễn viên: Vin Diesel, Dwayne Johnson, Jordana Brewster, Jason Statham, Charlize Theron, Kurt Russell, Scott Eastwood, Nathalie Emmanuel, Lucas Black, Elsa Pataky<br><br>Thể loại: Phim hành động, Phim viễn tưởng, Phim chiếu rạp<br><br>Thời lượng: 100 phút <br><br>  Thông tin phim: Theo thông tin mới nhất từ hãng Universal Studios, bộ phim Fast & Furious 8 đã vượt qua hàng rào thủ tục nhận được sự cho phép của chính phủ Mỹ và Cuba được bấm máy ghi hình ở một hòn đảo của quốc gia bí ẩn này." },
                 new Product { ProductName = "Taken", Category = film, Price = 143.50m, Tag = Series },
                 new Product { ProductName = "The big bang theory", Category = film, Price = 69.69m, Tag = Series },
                 new Product { ProductName = "Shameless", Category = film, Price = 143.50m, Tag = Series },

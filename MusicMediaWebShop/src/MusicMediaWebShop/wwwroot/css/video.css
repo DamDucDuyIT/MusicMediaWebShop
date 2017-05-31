@@ -1,28 +1,23 @@
 ﻿#video {
     background: #666;
-    height: 70px;
-    width: 400px;
-    padding: 20px;
+    height: 360px;
+    width: 640px;
+    padding: 6px;
 }
 
-#playlist {
-    background: #666;
-    width: 400px;
-    padding: 20px;
+
+.col-xs-3 {
+    margin-left: 500px;
 }
 
-.active a {
-    color: #5DB0E6;
-    text-decoration: none;
+.film_description {
+    width: 300px;
 }
 
-li a {
-    color: #eeeedd;
-    background: #333;
-    padding: 5px;
-    display: block;
+#description_column .col-xs-3 {
+    margin-left: 600px;
 }
 
-    li a:hover {
-        text-decoration: none;
-    }
+.film_description {
+    width: 450px;
+}

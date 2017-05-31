@@ -16,13 +16,21 @@
     text-decoration: none;
 }
 
-li a {
+.playlist li a {
     color: #eeeedd;
     background: #333;
     padding: 5px;
     display: block;
 }
 
-    li a:hover {
+    .playlist li a:hover {
         text-decoration: none;
     }
+
+.col-xs-3 {
+    margin-left: 400px;
+}
+
+.lyris {
+    width: 300px;
+}

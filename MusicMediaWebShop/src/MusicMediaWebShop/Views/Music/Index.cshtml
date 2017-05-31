@@ -1,70 +1,97 @@
 ﻿@model Product
 
-<audio id="audio" controls="controls" autoplay="autoplay" tabindex="0">
-    <source src="~/lib/data/@Html.DisplayFor(m => m.ProductURL)" type="audio/mpeg" />
-    Sorry, your browser does not support HTML5 audio.
-</audio>
-<ul id="playlist">
-    <li class="active">
-        <a href="~/lib/data/@Html.DisplayFor(m => m.ProductURL)">
-            @Html.DisplayFor(m => m.ProductName)
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/CryCry.mp3">
-            Cry Cry
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/YeuLaThaThu.mp3">
-            Yêu Là Tha Thu
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/DayByDay.mp3">
-            Day by Day
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/ChiLaGiacMo.mp3">
-            Let Me Love You
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/CryCry.mp3">
-            Nơi Nào Có Em
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/YeuLaThaThu.mp3">
-            Sexy is zero
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/DayByDay.mp3">
-            Knock Knock
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/ChiLaGiacMo.mp3">
-            Maria
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/CryCry.mp3">
-            Ano Hana
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/YeuLaThaThu.mp3">
-            Happy
-        </a>
-    </li>
-    <li>
-        <a href="~/lib/data/DayByDay.mp3">
-            Why so seriout
-        </a>
-    </li>
-</ul>
+
+<div class="row">
+    <marquee><span style="color: brown">Nghe nhạc tại website này - Quý đẹp trai</span></marquee>
+    <div class="col-xs-4 col-xs-offset-2">
+        <audio id="audio" controls="controls" autoplay="autoplay" tabindex="0">
+            <source src="~/lib/data/@Html.DisplayFor(m => m.ProductURL)" type="audio/mpeg" />
+            Sorry, your browser does not support HTML5 audio.
+        </audio>
+        <ul id="playlist">
+            <li class="active">
+                <a href="~/lib/data/@Html.DisplayFor(m => m.ProductURL)">
+                    @Html.DisplayFor(m => m.ProductName)
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/CryCry.mp3">
+                    Cry Cry
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/YeuLaThaThu.mp3">
+                    Yêu Là Tha Thu
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/DayByDay.mp3">
+                    Day by Day
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/ChiLaGiacMo.mp3">
+                    Let Me Love You
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/CryCry.mp3">
+                    Nơi Nào Có Em
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/YeuLaThaThu.mp3">
+                    Sexy is zero
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/DayByDay.mp3">
+                    Knock Knock
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/ChiLaGiacMo.mp3">
+                    Maria
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/CryCry.mp3">
+                    Ano Hana
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/YeuLaThaThu.mp3">
+                    Happy
+                </a>
+            </li>
+            <li>
+                <a href="~/lib/data/DayByDay.mp3">
+                    Why so seriout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-5">
+        <div class="lyris">
+            <details>
+                <summary><span style="color: dodgerblue">Xem miêu tả và lời bài hát</span></summary>
+                <h5> Bài hát @Html.DisplayFor(m => m.ProductName) có giá là: <span style="color: white; background-color: red"><strong> @Html.DisplayFor(m => m.Price)$ </strong></span></h5>
+                <p class="fn-wlyrics fn-content" data-min="300px" data-max="auto" style="overflow: hidden; height: auto;">@Html.Raw(Model.ProductDescription)</p>
+            </details>
+        </div>
+    </div>
+    <form id="@Model.ProductID" asp-action="AddToCart"
+          asp-controller="Cart" method="post">
+        <input type="hidden" asp-for="ProductID" />
+        <input type="hidden" name="returnUrl"
+               value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="lead">
+            <button type="submit" class="btn btn-success btn-sm">
+                Order
+            </button>
+        </span>
+    </form>
+
+</div>
 <script src="~/js/music.js"></script>
 <link href="~/css/music.css" rel="stylesheet" />
